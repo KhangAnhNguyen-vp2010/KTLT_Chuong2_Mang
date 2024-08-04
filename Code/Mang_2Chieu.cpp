@@ -380,6 +380,32 @@ void sortMatrixRows(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
     }
 }
 
+// Hàm sắp xếp cột trong ma trận
+void sortMatrixColumns(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
+    for (int j = 0; j < cols; j++) {
+        int column[100]; // Mảng để lưu trữ phần tử của cột hiện tại
+
+        // Lưu phần tử của cột vào mảng
+        for (int i = 0; i < rows; i++) {
+            column[i] = matrix[i][j];
+        }
+
+        // Sắp xếp mảng phần tử của cột
+        if (j % 2 == 0) {
+            // Cột chẵn: sắp xếp tăng dần
+            qsort(column, rows, sizeof(int), compareAsc);
+        } else {
+            // Cột lẻ: sắp xếp giảm dần
+            qsort(column, rows, sizeof(int), compareDesc);
+        }
+
+        // Ghi lại các phần tử đã sắp xếp vào cột của ma trận
+        for (int i = 0; i < rows; i++) {
+            matrix[i][j] = column[i];
+        }
+    }
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -473,6 +499,11 @@ int main()
     // Sắp xếp các dòng của ma trận
 	printf("KET QUA SAU KHI SAP XEP\n");
     sortMatrixRows(a, n, m);
+	xuat_Mang2C(a,n,m);
+	printf("\n---------------------------\n");
+	// Sắp xếp các cột của ma trận
+	printf("KET QUA SAU KHI SAP XEP THEO COT\n");
+    sortMatrixColumns(a, n, m);
 	xuat_Mang2C(a,n,m);
 	getch();
 	return 0;
