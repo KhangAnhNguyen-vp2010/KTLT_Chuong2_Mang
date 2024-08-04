@@ -357,6 +357,28 @@ void findMinMaxInColumn(int matrix[100][100], int rows, int cols, int k) {
     printf("Phan tu lon nhat trong cot %d la: %d\n", k, minElement);
 }
 
+// Hàm so sánh để sắp xếp tăng dần
+int compareAsc(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+// Hàm so sánh để sắp xếp giảm dần
+int compareDesc(const void *a, const void *b) {
+    return (*(int*)b - *(int*)a);
+}
+
+// Hàm sắp xếp dòng trong ma trận
+void sortMatrixRows(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        if (i % 2 == 0) {
+            // Dòng chẵn: sắp xếp tăng dần
+            qsort(matrix[i], cols, sizeof(int), compareAsc);
+        } else {
+            // Dòng lẻ: sắp xếp giảm dần
+            qsort(matrix[i], cols, sizeof(int), compareDesc);
+        }
+    }
+}
 
 int main()
 {
@@ -447,7 +469,11 @@ int main()
 
     // Tìm phần tử lớn nhất và nhỏ nhất trong cột thứ k
     findMinMaxInColumn(a, n, m, k2);
-
+	printf("\n---------------------------\n");
+    // Sắp xếp các dòng của ma trận
+	printf("KET QUA SAU KHI SAP XEP\n");
+    sortMatrixRows(a, n, m);
+	xuat_Mang2C(a,n,m);
 	getch();
 	return 0;
 }
