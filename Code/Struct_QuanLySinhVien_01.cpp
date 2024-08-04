@@ -57,6 +57,11 @@ void nhapFile(SinhVien a[], int n, char tenFile[MAXSIZE])
 {
 	FILE *f;
 	f=fopen(tenFile,"w");
+	if (f==NULL)
+	{
+		printf("Loi Mo File!!!");
+		return;
+	}
 	for (int i = 0; i < n; i++)
 	{
 		fprintf(f,"%d\n",a[i].soTT);
@@ -68,13 +73,38 @@ void nhapFile(SinhVien a[], int n, char tenFile[MAXSIZE])
 	fclose(f);
 }
 
+void xuatFile(SinhVien a[], int &n, char tenFile[MAXSIZE])
+{
+	FILE *f;
+	f=fopen(tenFile,"r");
+	if (f==NULL)
+	{
+		printf("Loi Mo File!!!");
+		return;
+	}
+	int i=0;
+	while (!feof(f))
+	{
+		fscanf(f,"%d",&a[i].soTT);
+		fscanf(f,"%s",&a[i].maSo);
+		fscanf(f,"%s",&a[i].hoTen);
+		fscanf(f,"%lf",&a[i].diemTL);
+		fscanf(f,"%lf",&a[i].diemKT);
+		i++;
+	}
+	n=i-1;
+	fclose(f);
+}
+
 int main()
 {
 	SinhVien a[MAXSIZE];
 	int n;
-	nhap_DSSinhVien(a,n);
+	/*nhap_DSSinhVien(a,n);
+	xuat_DSSinhVien(a,n);*/
+	//nhapFile(a,n,"SinhVien.txt");
+	xuatFile(a,n,"SinhVien.txt");
 	xuat_DSSinhVien(a,n);
-	nhapFile(a,n,"SinhVien.txt");
 	getch();
 	return 0;
 }
