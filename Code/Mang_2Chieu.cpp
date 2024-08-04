@@ -185,6 +185,32 @@ void countElements(int matrix[100][100], int rows, int cols, int* even, int* odd
     }
 }
 
+// Hàm tính tổng của từng cột và liệt kê các cột có tổng nhỏ nhất
+void listColumnsWithMinSum(int matrix[100][100], int rows, int cols) {
+    int colSums[100];
+    int minSum = INT_MAX;
+
+    // Tính tổng của từng cột
+    for (int j = 0; j < cols; j++) {
+        colSums[j] = 0;
+        for (int i = 0; i < rows; i++) {
+            colSums[j] += matrix[i][j];
+        }
+        if (colSums[j] < minSum) {
+            minSum = colSums[j];
+        }
+    }
+
+    // Liệt kê các cột có tổng nhỏ nhất
+    printf("Cac cot co tong nho nhat (%d): ", minSum);
+    for (int j = 0; j < cols; j++) {
+        if (colSums[j] == minSum) {
+            printf("%d ", j);
+        }
+    }
+    printf("\n");
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -236,6 +262,8 @@ int main()
     printf("So luong so am: %d\n", negative);
     printf("So luong so duong: %d\n", positive);
     printf("So luong so nguyen to: %d\n", prime);
+	printf("\n---------------------------\n");
+	listColumnsWithMinSum(a,n,m);
 	getch();
 	return 0;
 }
