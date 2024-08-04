@@ -57,6 +57,17 @@ int sum_above_main_diagonal(int matrix[][MAXSIZE], int n) {
     return sum;
 }
 
+// Hàm tính tổng các phần tử nằm phía trên đường chéo phụ
+int sum_above_secondary_diagonal(int matrix[][MAXSIZE], int n) {
+    int sum = 0;
+	for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            sum += matrix[i][j];
+        }
+    }
+    return sum;
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -69,6 +80,8 @@ int main()
 	printf("Tong cac phan tu nam tren duong cheo phu la: %d", sum_secondary_diagonal(a,n));
 	printf("\n--------------------------------------\n");
 	printf("Tong cac phan tu nam phia tren duong cheo chinh la: %d", sum_above_main_diagonal(a,n));
+	printf("\n--------------------------------------\n");
+	printf("Tong cac phan tu nam phia tren duong cheo phu la: %d", sum_above_secondary_diagonal(a,n));
 	getch();
 	return 0;
 }
