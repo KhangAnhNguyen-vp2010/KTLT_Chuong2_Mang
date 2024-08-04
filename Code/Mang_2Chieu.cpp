@@ -263,6 +263,26 @@ void listRowsWithAllEvenNumbers(int matrix[100][100], int rows, int cols) {
     printf("\n");
 }
 
+// Hàm tìm giá trị xuất hiện nhiều nhất trong ma trận
+int findMostFrequentValue(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
+    int frequency[MAXSIZE * MAXSIZE] = {0};
+    int maxValue = matrix[0][0];
+    int maxCount = 0;
+
+    // Duyệt qua các phần tử của ma trận và đếm số lần xuất hiện của mỗi giá trị
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            frequency[matrix[i][j]]++;
+            if (frequency[matrix[i][j]] > maxCount) {
+                maxCount = frequency[matrix[i][j]];
+                maxValue = matrix[i][j];
+            }
+        }
+    }
+
+    return maxValue;
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -320,6 +340,12 @@ int main()
 	listRowsWithMostPerfectNumbers(a,n,m);
 	printf("\n---------------------------\n");
 	listRowsWithAllEvenNumbers(a,n,m);
+	printf("\n---------------------------\n");
+	// Tìm giá trị xuất hiện nhiều nhất trong ma trận
+    int mostFrequentValue = findMostFrequentValue(a, n, m);
+
+    // In giá trị xuất hiện nhiều nhất
+    printf("Gia tri xuat hien nhieu nhat trong ma tran là: %d\n", mostFrequentValue);
 	getch();
 	return 0;
 }
