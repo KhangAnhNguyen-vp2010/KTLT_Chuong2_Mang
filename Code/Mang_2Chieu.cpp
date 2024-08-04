@@ -332,6 +332,32 @@ void findMinMaxInRow(int matrix[100][100], int rows, int cols, int k) {
     printf("Phan tu lon nhat trong dong %d la: %d\n", k, minElement);
 }
 
+// Hàm tìm phần tử lớn nhất và nhỏ nhất trong cột thứ k của ma trận
+void findMinMaxInColumn(int matrix[100][100], int rows, int cols, int k) {
+    if (k >= cols || k < 0) {
+        printf("Chi so cot k khong hop le.\n");
+        return;
+    }
+
+    int maxElement = INT_MIN;
+    int minElement = INT_MAX;
+
+    // Duyệt qua các phần tử của cột thứ k
+    for (int i = 0; i < rows; i++) {
+        if (matrix[i][k] > maxElement) {
+            maxElement = matrix[i][k];
+        }
+        if (matrix[i][k] < minElement) {
+            minElement = matrix[i][k];
+        }
+    }
+
+    // In phần tử lớn nhất và nhỏ nhất
+    printf("Phan tu lon nhat trong cot %d la: %d\n", k, maxElement);
+    printf("Phan tu lon nhat trong cot %d la: %d\n", k, minElement);
+}
+
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -413,6 +439,15 @@ int main()
 
     // Tìm phần tử lớn nhất và nhỏ nhất trong dòng thứ k
     findMinMaxInRow(a, n, m, k1);
+	printf("\n---------------------------\n");
+	int k2;
+	// Nhập chỉ số cột k
+    printf("Nhap chi so cot k: ");
+    scanf("%d", &k2);
+
+    // Tìm phần tử lớn nhất và nhỏ nhất trong cột thứ k
+    findMinMaxInColumn(a, n, m, k2);
+
 	getch();
 	return 0;
 }
