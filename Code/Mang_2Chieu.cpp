@@ -110,6 +110,14 @@ void sumElementsGreaterThanNextAbs(int matrix[100][100], int rows, int cols) {
 	printf("Tong cac phan tu lon hon tri tuyet doi cua phan tu lien sau no la: %d", sum);
 }
 
+int sumRow(int matrix[100][100], int cols, int k) {
+    int sum = 0;
+    for (int j = 0; j < cols; j++) {
+        sum += matrix[k][j];
+    }
+	return sum;
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -122,6 +130,21 @@ int main()
 	listPerfectNumbersInMatrix(a,n,m);
 	printf("\n---------------------------\n");
 	sumElementsGreaterThanNextAbs(a,n,m);
+	printf("\n---------------------------\n");
+	int k;
+	 // Nhập số dòng k
+    printf("Nhap so dong k: ");
+    scanf("%d", &k);
+
+    // Kiểm tra nếu dòng k hợp lệ
+	if (k >= 0 && k < n) {
+        // Tính tổng giá trị trên dòng k của ma trận
+		int result = sumRow(a, m, k);
+        // In kết quả
+        printf("Tong gia tri tren dong %d cua ma tran: %d\n", k, result);
+    } else {
+        printf("Dong k khong hop le.\n");
+    }
 	getch();
 	return 0;
 }
