@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
 #define MAXSIZE 100
@@ -60,6 +60,36 @@ void tinhTong(int a[][MAXSIZE], int n, int m)
 }
 
 
+// Hàm kiểm tra số hoàn thiện
+int isPerfectNumber(int num) {
+    if (num < 2) return 0;
+    int sum = 1; // 1 luôn là ước số của mọi số nguyên dương
+    for (int i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+            sum += i;
+        }
+    }
+    return sum == num;
+}
+
+// Hàm liệt kê các số hoàn thiện trong ma trận
+void listPerfectNumbersInMatrix(int matrix[100][100], int rows, int cols) {
+    printf("Cac so hoan thien trong ma tran la: ");
+    int found = 0;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (isPerfectNumber(matrix[i][j])) {
+                printf("%d ", matrix[i][j]);
+                found = 1;
+            }
+        }
+    }
+    if (!found) {
+        printf("Khong co so hoan thien nao trong ma tran.");
+    }
+    printf("\n");
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -68,6 +98,8 @@ int main()
 	xuat_Mang2C(a,n,m);
 	printf("\n---------------------------\n");
 	tinhTong(a,n,m);
+	printf("\n---------------------------\n");
+	listPerfectNumbersInMatrix(a,n,m);
 	getch();
 	return 0;
 }
