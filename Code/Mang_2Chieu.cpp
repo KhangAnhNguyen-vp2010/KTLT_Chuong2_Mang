@@ -90,6 +90,26 @@ void listPerfectNumbersInMatrix(int matrix[100][100], int rows, int cols) {
     printf("\n");
 }
 
+// Hàm tính tổng các phần tử lớn hơn trị tuyệt đối của phần tử liền sau nó
+void sumElementsGreaterThanNextAbs(int matrix[100][100], int rows, int cols) {
+    int sum = 0;
+    
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            // Kiểm tra phần tử liền sau trong cùng hàng
+            if (j < cols - 1 && matrix[i][j] > abs(matrix[i][j + 1])) {
+                sum += matrix[i][j];
+            }
+            // Kiểm tra phần tử liền sau trong cùng cột
+            if (i < rows - 1 && matrix[i][j] > abs(matrix[i + 1][j])) {
+                sum += matrix[i][j];
+            }
+        }
+    }
+    
+	printf("Tong cac phan tu lon hon tri tuyet doi cua phan tu lien sau no la: %d", sum);
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -100,6 +120,8 @@ int main()
 	tinhTong(a,n,m);
 	printf("\n---------------------------\n");
 	listPerfectNumbersInMatrix(a,n,m);
+	printf("\n---------------------------\n");
+	sumElementsGreaterThanNextAbs(a,n,m);
 	getch();
 	return 0;
 }
