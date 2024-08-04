@@ -118,6 +118,24 @@ int sumRow(int matrix[100][100], int cols, int k) {
 	return sum;
 }
 
+void sumBoundaryElements(int matrix[100][100], int rows, int cols) {
+    int sum = 0;
+
+    // Tính tổng các phần tử của hàng đầu tiên và hàng cuối cùng
+    for (int j = 0; j < cols; j++) {
+        sum += matrix[0][j]; // Hàng đầu tiên
+        sum += matrix[rows - 1][j]; // Hàng cuối cùng
+    }
+
+    // Tính tổng các phần tử của cột đầu tiên và cột cuối cùng (trừ đi các góc đã tính)
+    for (int i = 1; i < rows - 1; i++) {
+        sum += matrix[i][0]; // Cột đầu tiên
+        sum += matrix[i][cols - 1]; // Cột cuối cùng
+    }
+
+	printf("Tong cac gia tri nam tren bien cua ma tran: %d", sum);
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -145,6 +163,8 @@ int main()
     } else {
         printf("Dong k khong hop le.\n");
     }
+	printf("\n---------------------------\n");
+	sumBoundaryElements(a,n,m);
 	getch();
 	return 0;
 }
