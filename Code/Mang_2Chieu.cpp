@@ -136,6 +136,19 @@ void sumBoundaryElements(int matrix[100][100], int rows, int cols) {
 	printf("Tong cac gia tri nam tren bien cua ma tran: %d", sum);
 }
 
+// Hàm đếm tần suất xuất hiện của giá trị x trong ma trận
+int countOccurrences(int matrix[100][100], int rows, int cols, int x) {
+    int count = 0;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] == x) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -165,6 +178,17 @@ int main()
     }
 	printf("\n---------------------------\n");
 	sumBoundaryElements(a,n,m);
+	printf("\n---------------------------\n");
+	int x;
+	// Nhập giá trị x cần đếm tần suất
+    printf("Nhap gia tri x can dem tan suat: ");
+    scanf("%d", &x);
+
+    // Đếm tần suất xuất hiện của giá trị x trong ma trận
+	int result = countOccurrences(a, n,m, x);
+
+    // In kết quả
+    printf("Tan suat xuat hien cua gia tri %d trong ma tran: %d\n", x, result);
 	getch();
 	return 0;
 }
