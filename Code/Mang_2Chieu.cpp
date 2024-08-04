@@ -1,6 +1,7 @@
 ﻿#include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <limits.h>
 #define MAXSIZE 100
 
 
@@ -283,6 +284,29 @@ int findMostFrequentValue(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
     return maxValue;
 }
 
+// Hàm tìm số nguyên tố nhỏ nhất trong ma trận
+int findSmallestPrime(int matrix[100][100], int rows, int cols) {
+    int smallestPrime = INT_MAX;
+
+    // Duyệt qua tất cả các phần tử của ma trận
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (isPrime(matrix[i][j])) {
+                if (matrix[i][j] < smallestPrime) {
+                    smallestPrime = matrix[i][j];
+                }
+            }
+        }
+    }
+
+    // Nếu smallestPrime vẫn là INT_MAX, nghĩa là không có số nguyên tố nào trong ma trận
+    if (smallestPrime == INT_MAX) {
+        return -1; // Trả về -1 để chỉ ra rằng không có số nguyên tố
+    }
+
+    return smallestPrime;
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -346,6 +370,16 @@ int main()
 
     // In giá trị xuất hiện nhiều nhất
     printf("Gia tri xuat hien nhieu nhat trong ma tran là: %d\n", mostFrequentValue);
+	printf("\n---------------------------\n");
+	// Tìm số nguyên tố nhỏ nhất trong ma trận
+    int smallestPrime = findSmallestPrime(a, n, m);
+
+    // In số nguyên tố nhỏ nhất hoặc thông báo không có số nguyên tố
+    if (smallestPrime == -1) {
+        printf("Khong co so nguyen to trong ma tran.\n");
+    } else {
+        printf("So nguyen to nho nhat trong ma tran la: %d\n", smallestPrime);
+    }
 	getch();
 	return 0;
 }
