@@ -238,6 +238,31 @@ void listRowsWithMostPerfectNumbers(int matrix[100][100], int rows, int cols) {
     printf("\n");
 }
 
+// Hàm liệt kê chỉ số các dòng chứa toàn giá trị chẵn
+void listRowsWithAllEvenNumbers(int matrix[100][100], int rows, int cols) {
+    int allEven;
+    
+    // Duyệt qua từng dòng của ma trận
+    printf("Cac dong chua toan gia tri chan: ");
+    for (int i = 0; i < rows; i++) {
+        allEven = 1; // Giả định dòng hiện tại chứa toàn giá trị chẵn
+        
+        // Kiểm tra các phần tử trong dòng
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] % 2 != 0) {
+                allEven = 0; // Nếu tìm thấy giá trị lẻ, gán allEven bằng 0
+                break;
+            }
+        }
+        
+        // Nếu allEven vẫn bằng 1, nghĩa là dòng chứa toàn giá trị chẵn
+        if (allEven) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -293,6 +318,8 @@ int main()
 	listColumnsWithMinSum(a,n,m);
 	printf("\n---------------------------\n");
 	listRowsWithMostPerfectNumbers(a,n,m);
+	printf("\n---------------------------\n");
+	listRowsWithAllEvenNumbers(a,n,m);
 	getch();
 	return 0;
 }
