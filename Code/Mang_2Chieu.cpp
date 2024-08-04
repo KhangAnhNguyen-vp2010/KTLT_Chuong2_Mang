@@ -211,6 +211,33 @@ void listColumnsWithMinSum(int matrix[100][100], int rows, int cols) {
     printf("\n");
 }
 
+// Hàm liệt kê các dòng có nhiều số hoàn thiện nhất
+void listRowsWithMostPerfectNumbers(int matrix[100][100], int rows, int cols) {
+    int perfectCount[100] = {0};
+    int maxCount = 0;
+
+    // Đếm số lượng số hoàn thiện trong từng dòng
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (isPerfectNumber(matrix[i][j])) {
+                perfectCount[i]++;
+            }
+        }
+        if (perfectCount[i] > maxCount) {
+            maxCount = perfectCount[i];
+        }
+    }
+
+    // Liệt kê các dòng có số lượng số hoàn thiện nhiều nhất
+    printf("Cac dong co nhieu so hoan thien nhat (%d so hoan thien): ", maxCount);
+    for (int i = 0; i < rows; i++) {
+        if (perfectCount[i] == maxCount) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -264,6 +291,8 @@ int main()
     printf("So luong so nguyen to: %d\n", prime);
 	printf("\n---------------------------\n");
 	listColumnsWithMinSum(a,n,m);
+	printf("\n---------------------------\n");
+	listRowsWithMostPerfectNumbers(a,n,m);
 	getch();
 	return 0;
 }
