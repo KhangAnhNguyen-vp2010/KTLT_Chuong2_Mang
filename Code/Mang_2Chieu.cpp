@@ -149,6 +149,42 @@ int countOccurrences(int matrix[100][100], int rows, int cols, int x) {
     return count;
 }
 
+// Hàm kiểm tra số nguyên tố
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+void countElements(int matrix[100][100], int rows, int cols, int* even, int* odd, int* negative, int* positive, int* prime) {
+    *even = 0;
+    *odd = 0;
+    *negative = 0;
+    *positive = 0;
+    *prime = 0;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            int value = matrix[i][j];
+            if (value % 2 == 0) {
+                (*even)++;
+            } else {
+                (*odd)++;
+            }
+            if (value < 0) {
+                (*negative)++;
+            } else if (value > 0) {
+                (*positive)++;
+            }
+            if (isPrime(value)) {
+                (*prime)++;
+            }
+        }
+    }
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -189,6 +225,17 @@ int main()
 
     // In kết quả
     printf("Tan suat xuat hien cua gia tri %d trong ma tran: %d\n", x, result);
+	printf("\n---------------------------\n");
+	int even, odd, negative, positive, prime;
+	// Đếm các phần tử
+    countElements(a, n, m, &even, &odd, &negative, &positive, &prime);
+
+    // In kết quả
+    printf("So luong so chan: %d\n", even);
+    printf("So luong so le: %d\n", odd);
+    printf("So luong so am: %d\n", negative);
+    printf("So luong so duong: %d\n", positive);
+    printf("So luong so nguyen to: %d\n", prime);
 	getch();
 	return 0;
 }
