@@ -406,6 +406,20 @@ void sortMatrixColumns(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
     }
 }
 
+// Hàm sắp xếp ma trận theo thứ tự zic-zac
+void sortMatrixZigzag(int matrix[MAXSIZE][MAXSIZE], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        // Duyệt qua các phần tử của hàng i
+        if (i % 2 == 0) {
+            // Hàng chẵn: sắp xếp tăng dần
+            qsort(matrix[i], cols, sizeof(int), compareAsc);
+        } else {
+            // Hàng lẻ: sắp xếp giảm dần
+            qsort(matrix[i], cols, sizeof(int), compareDesc);
+        }
+    }
+}
+
 int main()
 {
 	int a[MAXSIZE][MAXSIZE];
@@ -504,6 +518,11 @@ int main()
 	// Sắp xếp các cột của ma trận
 	printf("KET QUA SAU KHI SAP XEP THEO COT\n");
     sortMatrixColumns(a, n, m);
+	xuat_Mang2C(a,n,m);
+	printf("\n---------------------------\n");
+	printf("KET QUA SAU KHI SAP XEP THEO ZIC-ZAC\n");
+	 // Sắp xếp ma trận theo thứ tự zic-zac
+    sortMatrixZigzag(a, n, m);
 	xuat_Mang2C(a,n,m);
 	getch();
 	return 0;
