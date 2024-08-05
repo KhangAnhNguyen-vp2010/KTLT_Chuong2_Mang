@@ -130,6 +130,23 @@ void XuatSNT(int a[], int n) {
 	}
 	if (dem == 0) printf("\nMang khong co so nguyen to!");
 }
+int KTSHT(int a) {
+	int tong = 0;
+	for (int i = 0; i <= a; i++)
+	{
+		if (a % i == 0) tong += i;
+	}
+	if (tong == a) return 1; else return 0;
+}
+void XuatSHT(int a[], int n) {
+	int dem = 0;
+	printf("\nCac so hoan thien:\n");
+	for (int i = 0; i < n; i++)
+	{
+		if (KTSHT(a[i]) == 1) { printf("%d\t", a[i]); dem++; }
+	}
+	if (dem == 0) printf("\nMang khong chua so hoan thien!");
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -143,4 +160,5 @@ int main() {
 	Demlonhonx(a, n, x);
 	Sum(a, n);
 	XuatSNT(a, n);
+	XuatSHT(a, n);
 }
