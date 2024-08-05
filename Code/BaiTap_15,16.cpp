@@ -37,10 +37,59 @@ void DemPTChanLe(int a[], int n) {
 	printf("\nSo phan tu chan:%d", demchan);
 	printf("\nSo phan tu le:%d", demle);
 }
+void DoiCho(int& a, int& b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+void SapXep(int a[], int n) {
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++) {
+			if (a[i] > a[j]) DoiCho(a[i], a[j]);
+		}
+	}
+}
+void LinearSearch(int a[], int n, int& x) {
+	printf("\nMoi nhap vao x:");
+	scanf("%d", &x);
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] == x) {
+			printf("\nTim thay x:%d va vi tri:%d", a[i], i); return;
+		}
+	}
+	printf("\nKhong tim thay x va vi tri:-1!");
+}
+void BinarySearch(int a[], int n, int& x) {
+	printf("\nMoi nhap vao x:");
+	scanf("%d", &x);
+	int l = 0;
+	int r = n - 1;
+	while (l <= r)
+	{
+		int mid = (l + r) / 2;
+		if (a[mid] == x) {
+			printf("\nTim thay x:%d va vi tri:%d", a[mid], mid);
+			return;
+		}
+		else
+			if (a[mid] > x) {
+				r = mid - 1;
+			}
+			else {
+				l = mid + 1;
+			}
+	}
+	printf("\nKhong tim thay x va vi tri:-1");
+}
 int main() {
-	int a[100], n;
+	int a[100], n,x;
 	NhapM(a, n);
 	XuatM(a, n);
 	TimMaxMin(a, n);
 	DemPTChanLe(a, n);
+	SapXep(a, n);
+	LinearSearch(a, n, x);
+	BinarySearch(a, n, x);
 }
