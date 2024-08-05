@@ -161,6 +161,17 @@ void XuatVTLe(int a[], int n) {
 		if (i % 2 != 0) printf("%d\t", a[i]);
 	}
 }
+void TimMaxMin_ViTri(int a[], int n) {
+	int max = a[0], min = a[0];
+	int IndexMax = -1, IndexMin = -1;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > max) { max = a[i]; IndexMax = i; }
+		if (a[i] < min) { min = a[i]; IndexMin = i; }
+	}
+	printf("\nPhan tu Max:%d va vi tri:%d", max, IndexMax);
+	printf("\nPhan tu Max:%d va vi tri:%d", min, IndexMin);
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -177,4 +188,5 @@ int main() {
 	XuatSHT(a, n);
 	XuatVTChan(a, n);
 	XuatVTLe(a, n);
+	TimMaxMin_ViTri(a, n);
 }
