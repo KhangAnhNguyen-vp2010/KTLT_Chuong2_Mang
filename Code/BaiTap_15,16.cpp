@@ -18,8 +18,18 @@ void XuatM(int a[], int n) {
 		printf("%d\t", a[i]);
 	}
 }
+void TimMaxMin(int a[], int n) {
+	int max = a[0], min = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > max) max = a[i];
+		if (a[i] < min) min = a[i];
+	}
+	printf("\nMax:%d\tMin:%d", max, min);
+}
 int main() {
 	int a[100], n;
 	NhapM(a, n);
 	XuatM(a, n);
+	TimMaxMin(a, n);
 }
