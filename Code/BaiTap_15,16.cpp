@@ -147,6 +147,20 @@ void XuatSHT(int a[], int n) {
 	}
 	if (dem == 0) printf("\nMang khong chua so hoan thien!");
 }
+void XuatVTChan(int a[], int n) {
+	printf("\nCac phan tu o vi tri chan:\n");
+	for (int i = 0; i < n; i++)
+	{
+		if (i % 2 == 0) printf("%d\t", a[i]);
+	}
+}
+void XuatVTLe(int a[], int n) {
+	printf("\nCac phan tu o vi tri le:\n");
+	for (int i = 0; i < n; i++)
+	{
+		if (i % 2 != 0) printf("%d\t", a[i]);
+	}
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -161,4 +175,6 @@ int main() {
 	Sum(a, n);
 	XuatSNT(a, n);
 	XuatSHT(a, n);
+	XuatVTChan(a, n);
+	XuatVTLe(a, n);
 }
