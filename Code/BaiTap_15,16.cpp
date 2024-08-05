@@ -93,6 +93,16 @@ void Demx(int a[], int n, int& x) {
 	}
 	printf("\nPhan tu %d xuat hien:%d", x, dem);
 }
+void Demlonhonx(int a[], int n, int& x) {
+	printf("\nMoi nhap vao x:");
+	scanf("%d", &x);
+	int dem = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > x) dem++;
+	}
+	printf("\nCo %d phan tu lon hon %d", dem, x);
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -103,4 +113,5 @@ int main() {
 	LinearSearch(a, n, x);
 	BinarySearch(a, n, x);
 	Demx(a, n, x);
+	Demlonhonx(a, n, x);
 }
