@@ -111,6 +111,25 @@ void Sum(int a[], int n) {
 	}
 	printf("\nGia tri cua tong phan tu trong a:%d", sum);
 }
+int KTSNT(int a) {
+	int dem = 0;
+	for (int i = 0; i < a; i++)
+	{
+		if (a % i == 0) dem++;
+	}
+	return dem;
+}
+void XuatSNT(int a[], int n) {
+	int dem = 0;
+	printf("\nCac so nguyen to:\n");
+	for (int i = 0; i < n; i++)
+	{
+		if (KTSNT(a[i] == 0)) {
+			printf("%d\t", a[i]); dem++;
+		}
+	}
+	if (dem == 0) printf("\nMang khong co so nguyen to!");
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -123,4 +142,5 @@ int main() {
 	Demx(a, n, x);
 	Demlonhonx(a, n, x);
 	Sum(a, n);
+	XuatSNT(a, n);
 }
