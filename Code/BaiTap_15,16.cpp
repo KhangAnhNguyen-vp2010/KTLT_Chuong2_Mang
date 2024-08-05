@@ -103,6 +103,14 @@ void Demlonhonx(int a[], int n, int& x) {
 	}
 	printf("\nCo %d phan tu lon hon %d", dem, x);
 }
+void Sum(int a[], int n) {
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += a[i];
+	}
+	printf("\nGia tri cua tong phan tu trong a:%d", sum);
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -114,4 +122,5 @@ int main() {
 	BinarySearch(a, n, x);
 	Demx(a, n, x);
 	Demlonhonx(a, n, x);
+	Sum(a, n);
 }
