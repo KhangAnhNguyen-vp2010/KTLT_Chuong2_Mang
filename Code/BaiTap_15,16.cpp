@@ -83,6 +83,16 @@ void BinarySearch(int a[], int n, int& x) {
 	}
 	printf("\nKhong tim thay x va vi tri:-1");
 }
+void Demx(int a[], int n, int& x) {
+	printf("\nMoi nhap vao x:");
+	scanf("%d", &x);
+	int dem = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] == x) dem++;
+	}
+	printf("\nPhan tu %d xuat hien:%d", x, dem);
+}
 int main() {
 	int a[100], n,x;
 	NhapM(a, n);
@@ -92,4 +102,5 @@ int main() {
 	SapXep(a, n);
 	LinearSearch(a, n, x);
 	BinarySearch(a, n, x);
+	Demx(a, n, x);
 }
