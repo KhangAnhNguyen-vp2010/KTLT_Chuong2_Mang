@@ -172,8 +172,27 @@ void TimMaxMin_ViTri(int a[], int n) {
 	printf("\nPhan tu Max:%d va vi tri:%d", max, IndexMax);
 	printf("\nPhan tu Max:%d va vi tri:%d", min, IndexMin);
 }
+void GhepMangTangDan(int b[], int c[], int a[], int n1, int n2, int& n3) {
+	n3 = n1 + n2;
+	int i1 = 0, i2 = 0, i3 = 0;
+	printf("\n");
+	while (i3 < n3)
+	{
+		if (i1 >= n1) {
+			a[i3] = c[i2];
+			i2++;
+		}
+		else {
+			a[i3] = b[i1];
+			i1++;
+		}
+		i3++;
+	}
+	SapXep(a, n3);
+}
 int main() {
 	int a[100], n,x;
+	int b[100], c[100], d[100];
 	NhapM(a, n);
 	XuatM(a, n);
 	TimMaxMin(a, n);
@@ -188,5 +207,12 @@ int main() {
 	XuatSHT(a, n);
 	XuatVTChan(a, n);
 	XuatVTLe(a, n);
-	TimMaxMin_ViTri(a, n);
+	int n1, n2, n3;
+	NhapM(b, n1);
+	XuatM(b, n1);
+	printf("\n");
+	NhapM(c, n2);
+	XuatM(c, n2);
+	GhepMangTangDan(b, c, d, n1, n2, n3);
+	XuatM(d, n3);
 }
