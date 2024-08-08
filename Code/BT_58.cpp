@@ -69,6 +69,14 @@ void KTToanChan(int a[], int n) {
 	}
 	printf("\nMang la toan chan!");
 }
+void KTChanLeXenKe(int a[], int n) {
+	for (int i = 0; i < n - 1; i++)
+	{
+		if (a[i] % 2 == 0 && a[i + 1] % 2 == 0) { printf("\nMang khong la day chan le xen ke!"); return; }
+		if (a[i] % 2 != 0 && a[i + 1] % 2 != 0) { printf("\nMang khong la day chan le xen ke!"); return; }
+	}
+	printf("\nMang la day chan le xen ke!");
+}
 int main() {
 	int a[100], n;
 	NhapM(a, n);
@@ -77,4 +85,5 @@ int main() {
 	XuatPTToanLe(a, n);
 	TimMax(a, n);
 	KTToanChan(a, n);
+	KTChanLeXenKe(a, n);
 }
