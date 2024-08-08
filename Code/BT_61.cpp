@@ -33,9 +33,28 @@ void KTMangSNT(int a[], int n) {
 	}
 	printf("\nMang chua toan bo la so nguyen to!");
 }
+void KTMangDX(int a[], int n) {
+	for (int i = 0; i < n; i++)
+	{
+		if (n % 2 == 0) {
+			if (a[i] != a[n - i - 1]) {
+				printf("\nMang khong doi xung!"); return;
+			}
+		}
+		if (n % 2 != 0) {
+			int temp = (n / 2) + 1;
+			if (i == temp) break;
+			if (a[i] != a[n - i - 1]) {
+				printf("\nMang khong doi xung!"); return;
+			}
+		}
+	}
+	printf("\nMang doi xung!");
+}
 int main() {
 	int a[100], n;
 	NhapM(a, n);
 	XuatM(a, n);
 	KTMangSNT(a, n);
+	KTMangDX(a, n);
 }
