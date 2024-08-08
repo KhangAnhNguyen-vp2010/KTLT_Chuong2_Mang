@@ -51,10 +51,28 @@ void KTMangDX(int a[], int n) {
 	}
 	printf("\nMang doi xung!");
 }
+void KTTangGiam(int a[], int n) {
+	int demtang = 0, demgiam = 0;
+	for (int i = 0; i < n - 1; i++)
+	{
+		if (a[i] < a[i + 1]) {
+			demtang++;
+		}
+	}
+	for (int i = 0; i < n - 1; i++)
+	{
+		if (a[i] > a[i + 1]) {
+			demgiam++;
+		}
+	}
+	if (demtang == (n - 1)) printf("\nMang tang dan!"); else
+		if (demgiam == (n - 1)) printf("\nMang giam dan!"); else printf("\nMang khong tang cung khong giam!");
+}
 int main() {
 	int a[100], n;
 	NhapM(a, n);
 	XuatM(a, n);
 	KTMangSNT(a, n);
 	KTMangDX(a, n);
+	KTTangGiam(a, n);
 }
