@@ -50,10 +50,23 @@ void XuatPTToanLe(int a[], int n) {
 		if (KTToanLe(a[i]) == 1) printf("%d\t", a[i]);
 	}
 }
+void TimMax(int a[], int n) {
+	int max = a[0];
+	int index;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] >= max) {
+			max = a[i];
+			index = i;
+		}
+	}
+	printf("\nSo lon nhat cuoi cung cua mang:%d va vi tri :%d", max, index);
+}
 int main() {
 	int a[100], n;
 	NhapM(a, n);
 	XuatM(a, n);
 	DemSNT(a, n);
 	XuatPTToanLe(a, n);
+	TimMax(a, n);
 }
