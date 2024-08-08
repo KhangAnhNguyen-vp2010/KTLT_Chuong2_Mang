@@ -62,6 +62,13 @@ void TimMax(int a[], int n) {
 	}
 	printf("\nSo lon nhat cuoi cung cua mang:%d va vi tri :%d", max, index);
 }
+void KTToanChan(int a[], int n) {
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] % 2 != 0) { printf("\nMang khong la toan chan!");	return; }
+	}
+	printf("\nMang la toan chan!");
+}
 int main() {
 	int a[100], n;
 	NhapM(a, n);
@@ -69,4 +76,5 @@ int main() {
 	DemSNT(a, n);
 	XuatPTToanLe(a, n);
 	TimMax(a, n);
+	KTToanChan(a, n);
 }
